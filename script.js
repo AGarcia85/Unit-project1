@@ -76,4 +76,15 @@ function clearColor() {
     green.style.border = "5px solid black";
     blue.style.backgroundColor = "darkblue";
     blue.style.border = "5px solid black";
+};
+// 5. Create a flash color function that will flash all colors at the same time to tell you you got it wrong
+function flashColor() {
+    red.style.backgroundColor = "red";
+    red.style.border = "5px solid white";
+    yellow.style.backgroundColor = "yellow";
+    yellow.style.border = "5px solid white";
+    green.style.backgroundColor = "green";
+    green.style.border = "5px solid white";
+    blue.style.backgroundColor = "blue";
+    blue.style.border = "5px solid white";
 }
