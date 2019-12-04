@@ -2,19 +2,45 @@ body {
     background-color: rgb(206, 110, 253);
 }
 
+header {
+    width: 400px;
+    height: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    padding: 10px;
+    margin: auto;
+
+}
+
 h1 {
     text-align: center;
     font-family: fantasy;
-    font-size: 70px;
+    font-size: 80px;
     font-weight: bold;
+    padding: 10px;
     margin: 0;
 }
 
-h2 {
-    text-align: center;
-    font-family: fantasy;
-    font-size: 50px;
-    margin: 0;
+#s {
+    color: red;
+}
+
+#i {
+    color: yellow;
+}
+
+#m {
+    color: green;
+}
+
+#o {
+    color: blue;
+}
+
+#n {
+    color: red;
 }
 
 button {
