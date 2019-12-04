@@ -111,3 +111,20 @@ function checkTurn() {
         gameWon();
     }
 }
+// 7. Create a round function to run level difficulty and increment as player moves up
+function roundTurn() {
+    if (flash = level) {
+        clearInterval(intervalId);
+        compTurn = false;
+        clearColor();
+    }else if (compTurn) {
+        clearColor();
+        setTimeout(() => {
+            if (colors[flash] == 0) red();
+            if (colors[flash] == 1) yellow();
+            if (colors[flash] == 2) green();
+            if (colors[flash] == 3) blue();
+            flash++
+        }, 200)
+    }
+} 
