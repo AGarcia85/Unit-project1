@@ -29,7 +29,7 @@ red.addEventListener("click", function red1() {
             clearColor();
         }, 300)
     }
-})
+});
 
 yellow.addEventListener("click", function yellow1() {
     yellow.style.backgroundColor = "yellow";
@@ -41,7 +41,7 @@ yellow.addEventListener("click", function yellow1() {
             clearColor();
         }, 300)
     }
-})
+});
 
 green.addEventListener("click", function green1() {
     green.style.backgroundColor = "green";
@@ -53,7 +53,7 @@ green.addEventListener("click", function green1() {
             clearColor();
         }, 300)
     }
-})
+});
 
 blue.addEventListener("click", function blue1() {
     blue.style.backgroundColor = "blue";
@@ -65,4 +65,15 @@ blue.addEventListener("click", function blue1() {
             clearColor();
         }, 300)
     }
-})
+});
+// 4. Create a clear color function to allow colors to return back to normal after being clicked
+function clearColor() {
+    red.style.backgroundColor = "darkred";
+    red.style.border = "5px solid black";
+    yellow.style.backgroundColor = "rgb(155, 155, 3)";
+    yellow.style.border = "5px solid black";
+    green.style.backgroundColor = "darkgreen";
+    green.style.border = "5px solid black";
+    blue.style.backgroundColor = "darkblue";
+    blue.style.border = "5px solid black";
+}
