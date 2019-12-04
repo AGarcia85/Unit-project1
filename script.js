@@ -24,6 +24,7 @@ red.addEventListener("click", function red1() {
     red.style.opacity = 1;
     red.style.border = "5px solid white";
     playerTurn.push(0);
+    checkTurn();
     if (!win) {
         setTimeout(() => {
             clearColor();
@@ -36,6 +37,7 @@ yellow.addEventListener("click", function yellow1() {
     yellow.style.opacity = 1;
     yellow.style.border = "5px solid white";
     playerTurn.push(1);
+    checkTurn();
     if (!win) {
         setTimeout(() => {
             clearColor();
@@ -48,6 +50,7 @@ green.addEventListener("click", function green1() {
     green.style.opacity = 1;
     green.style.border = "5px solid white";
     playerTurn.push(2);
+    checkTurn();
     if (!win) {
         setTimeout(() => {
             clearColor();
@@ -60,6 +63,7 @@ blue.addEventListener("click", function blue1() {
     blue.style.opacity = 1;
     blue.style.border = "5px solid white";
     playerTurn.push(3);
+    checkTurn();
     if (!win) {
         setTimeout(() => {
             clearColor();
@@ -87,4 +91,23 @@ function flashColor() {
     green.style.border = "5px solid white";
     blue.style.backgroundColor = "blue";
     blue.style.border = "5px solid white";
+}
+// 6. Create a check function to check player input
+function checkTurn() {
+    if (playerTurn[playerTurn.length] !== colors[playerTurn.length]) {
+        flashColor();
+        levelCounter.innerHTML = "YOU SUCK!";
+        setTimeout(() => {
+            clearColor();
+        }, 800)
+    }else if (level == playerTurn.length && !win) {
+        level++;
+        playerTurn = [];
+        compTurn = true;
+        flash = 0;
+        levelCounter.innerHTML = level;
+        intervalId = setInterval(roundTurn, 800);
+    }else if (playerTurn.length == 30 && correct) {
+        gameWon();
+    }
 }
