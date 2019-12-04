@@ -91,7 +91,7 @@ function flashColor() {
     green.style.border = "5px solid white";
     blue.style.backgroundColor = "blue";
     blue.style.border = "5px solid white";
-}
+};
 // 6. Create a check function to check player input
 function checkTurn() {
     if (playerTurn[playerTurn.length] !== colors[playerTurn.length]) {
@@ -100,7 +100,7 @@ function checkTurn() {
         setTimeout(() => {
             clearColor();
         }, 800)
-    }else if (level == playerTurn.length && !win) {
+    }else if (level == playerTurn.length && correct && !win) {
         level++;
         playerTurn = [];
         compTurn = true;
@@ -110,7 +110,7 @@ function checkTurn() {
     }else if (playerTurn.length == 30 && correct) {
         gameWon();
     }
-}
+};
 // 7. Create a round function to run level difficulty and increment as player moves up
 function roundTurn() {
     if (flash = level) {
@@ -127,4 +127,10 @@ function roundTurn() {
             flash++
         }, 200)
     }
+};
+// 8. Create a win game function that tells the player they beat the game
+function gameWon() {
+    flashColor();
+    levelCounter.innerHTML = "NOT BAD YOUNG GRASSHOPPER"
+        win = true;
 } 
