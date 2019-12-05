@@ -55,7 +55,7 @@ function rounds() {
             if (colorOrder[flash] == 2) green1();
             if (colorOrder[flash] == 3) blue1();
             flash++;
-        }, 200);
+        }, 500);
     }; 
 };
 
@@ -63,30 +63,37 @@ function rounds() {
 function checkTurn() {
     console.log(playerOrder);
     console.log(colorOrder);
-    if (playerOrder[playerOrder.length] !== colorOrder[playerOrder.length]) {
-        correct = false;
+    if (playerOrder[playerOrder.length - 1] !== colorOrder[playerOrder.length - 1])
+    correct = false;
+    if (playerOrder.length == 5 && correct) {
+        flashColor();
+        levelCounter.innerHTML = "FINALLY!";
+        win = true;
+    }
+    if (correct == false) {
         flashColor();
         levelCounter.innerHTML = "YOU SUCK!";
         start.style.backgroundColor = "red"
         setTimeout(() => {
-            clearColor();
+            levelCounter.innerHTML = "-"
+        clearColor();
+		compTurn = true;
+		flash = 0;
+		playerOrder = [];
+		correct = true;
+		intervalId = setInterval(rounds, 800);
         }, 800);
     }
-    if (level === playerOrder.length && !win) {
-        correct = true;
+    if (level === playerOrder.length && correct && !win) {
         level++;
         playerOrder = [];
-        compOrder = [];
         compTurn = true;
         flash = 0;
         levelCounter.innerHTML = level;
         intervalId = setInterval(rounds, 800);
     }
-    if (playerOrder.length == 30 && correct) {
-        flashColor();
-        level.innerHTML = "WIN!";
-    }
 };
+
 // . Create event listener and function for color ids
 function red1() {
     red.style.backgroundColor = "red";
