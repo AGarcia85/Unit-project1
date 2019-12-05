@@ -8,9 +8,10 @@ let yellow = document.querySelector("#yellow");
 let green = document.querySelector("#green");
 let blue = document.querySelector("#blue");
 let colors = document.querySelectorAll(".colors")
-//console.log(colors);
+let colorOrder = (colors);
+console.log(colorOrder);
 // 2. Create varibles for player turn, computer turn, correct input, colors flash, interval and win.
-let playerTurn = []
+let playerOrder = []
 let compTurn;
 let level;
 let correct;
@@ -19,55 +20,63 @@ let intervalId;
 let win;
 
 // 3. Create event listener and function for color ids
-red.addEventListener("click", function red1() {
+function red1() {
     red.style.backgroundColor = "red";
-    red.style.opacity = 1;
     red.style.border = "5px solid white";
+}
+red.addEventListener("click", function() { 
     playerTurn.push(0);
-    checkTurn();
+    //checkTurn();
+    red1();
     if (!win) {
         setTimeout(() => {
             clearColor();
-        }, 300)
+        }, 500);
     }
 });
 
-yellow.addEventListener("click", function yellow1() {
+function yellow1() {
     yellow.style.backgroundColor = "yellow";
-    yellow.style.opacity = 1;
     yellow.style.border = "5px solid white";
+}
+yellow.addEventListener("click", function() {
     playerTurn.push(1);
-    checkTurn();
+    //checkTurn();
+    yellow1();
     if (!win) {
         setTimeout(() => {
             clearColor();
-        }, 300)
+        }, 500);
     }
 });
 
-green.addEventListener("click", function green1() {
+function green1() {
     green.style.backgroundColor = "green";
-    green.style.opacity = 1;
     green.style.border = "5px solid white";
+}
+green.addEventListener("click", function() {
     playerTurn.push(2);
-    checkTurn();
+    //checkTurn();
+    green1();
     if (!win) {
         setTimeout(() => {
             clearColor();
-        }, 300)
+        }, 500);
     }
 });
 
-blue.addEventListener("click", function blue1() {
+function blue1() {
     blue.style.backgroundColor = "blue";
-    blue.style.opacity = 1;
     blue.style.border = "5px solid white";
+}
+blue.addEventListener("click", function() {
     playerTurn.push(3);
-    checkTurn();
+    //checkTurn();
+    blue1();
     if (!win) {
         setTimeout(() => {
             clearColor();
-        }, 300)
+        }, 500);
     }
 });
 // 4. Create a clear color function to allow colors to return back to normal after being clicked
@@ -92,45 +101,4 @@ function flashColor() {
     blue.style.backgroundColor = "blue";
     blue.style.border = "5px solid white";
 };
-// 6. Create a check function to check player input
-function checkTurn() {
-    if (playerTurn[playerTurn.length] !== colors[playerTurn.length]) {
-        flashColor();
-        levelCounter.innerHTML = "YOU SUCK!";
-        setTimeout(() => {
-            clearColor();
-        }, 800)
-    }else if (level == playerTurn.length && correct && !win) {
-        level++;
-        playerTurn = [];
-        compTurn = true;
-        flash = 0;
-        levelCounter.innerHTML = level;
-        intervalId = setInterval(roundTurn, 800);
-    }else if (playerTurn.length == 30 && correct) {
-        gameWon();
-    }
-};
-// 7. Create a round function to run level difficulty and increment as player moves up
-function roundTurn() {
-    if (flash = level) {
-        clearInterval(intervalId);
-        compTurn = false;
-        clearColor();
-    }else if (compTurn) {
-        clearColor();
-        setTimeout(() => {
-            if (colors[flash] == 0) red();
-            if (colors[flash] == 1) yellow();
-            if (colors[flash] == 2) green();
-            if (colors[flash] == 3) blue();
-            flash++
-        }, 200)
-    }
-};
-// 8. Create a win game function that tells the player they beat the game
-function gameWon() {
-    flashColor();
-    levelCounter.innerHTML = "NOT BAD YOUNG GRASSHOPPER"
-        win = true;
-} 
+
