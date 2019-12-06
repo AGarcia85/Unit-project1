@@ -8,13 +8,12 @@ let yellow = document.querySelector("#yellow");
 let green = document.querySelector("#green");
 let blue = document.querySelector("#blue");
 let colors = document.querySelectorAll(".colors")
-let colorOrder = (colors);
-console.log(colorOrder);
-// 2. Create varibles for player turn, computer turn, correct input, colors flash, interval and win.
-let playerOrder = []
+let colorOrder = [];
+// 2. Create varibles for player turn, computer turn, colors flash, interval and win.
+let playerOrder = [];
 let compTurn;
+let compOrder = [];
 let level;
-let correct;
 let flash;
 let intervalId;
 let win;
@@ -28,17 +27,25 @@ function gameStart() {
     levelCounter.innerHTML = 1
     win == false;
     playerOrder = [];
+    compList();
     flash = 0;
     intervalId = 0;
     level = 1;
-    correct = true;
     colorOrder = []
-    for (let i = 0; i < 30; i++) {
+    for (let i = 0; i < 20; i++) {
         colorOrder.push(Math.floor(Math.random() * 4));
     }
+    //console.log(colorOrder);
     compTurn = true;
     intervalId = setInterval(rounds, 800);
 };
+// Create a function to track the computer order with a for loop with colorOrder.length
+function compList() {
+    for (let j = 0; j < intervalId; j++) {
+        compOrder.push(colorOrder[j]);
+    }
+
+}
 
 // 4. Create fucntion to play rounds
 function rounds() {
@@ -46,8 +53,7 @@ function rounds() {
         clearInterval(intervalId);
         compTurn = false;
         clearColor();
-    }
-    if (compTurn == true) {
+    }else if (compTurn == true) {
         clearColor();
         setTimeout(function() {
             if (colorOrder[flash] == 0) red1();
@@ -61,30 +67,28 @@ function rounds() {
 
 // 5. Create a check function to check player input against computer input.
 function checkTurn() {
+    // added console.log for both playerorder and colors played to check for input
     console.log(playerOrder);
-    console.log(colorOrder);
-    if (playerOrder[playerOrder.length - 1] !== colorOrder[playerOrder.length - 1])
-    correct = false;
-    if (playerOrder.length == 5 && correct) {
+    console.log(compOrder);
+    // add win argument for when player reaches last level
+    if (playerOrder.length == 20) {
         flashColor();
         levelCounter.innerHTML = "FINALLY!";
         win = true;
-    }
-    if (correct == false) {
+    // add an if statement for when player clicks incorrect color 
+    }else if (playerOrder[playerOrder.length - 1] !== colorOrder[playerOrder.length - 1]) {
         flashColor();
         levelCounter.innerHTML = "YOU SUCK!";
         start.style.backgroundColor = "red"
         setTimeout(() => {
-            levelCounter.innerHTML = "-"
-        clearColor();
-		compTurn = true;
-		flash = 0;
-		playerOrder = [];
-		correct = true;
-		intervalId = setInterval(rounds, 800);
+            clearColor();
+		    compTurn = true;
+		    flash = 0;
+		    playerOrder = [];
+		    correct = true;
         }, 800);
-    }
-    if (level === playerOrder.length && correct && !win) {
+    // add an if statement for when player gets right colors and needs to move to next
+    }else if (level === playerOrder.length && !win) {
         level++;
         playerOrder = [];
         compTurn = true;
@@ -94,19 +98,20 @@ function checkTurn() {
     }
 };
 
-// . Create event listener and function for color ids
+// 6. Create event listener and function for color ids
 function red1() {
     red.style.backgroundColor = "red";
     red.style.border = "5px solid white";
 }
 red.addEventListener("click", function() { 
     playerOrder.push(0);
+    compList();
     checkTurn();
     red1();
     if (!win) {
         setTimeout(() => {
             clearColor();
-        }, 500);
+        }, 300);
     }
 });
 
@@ -116,12 +121,13 @@ function yellow1() {
 }
 yellow.addEventListener("click", function() {
     playerOrder.push(1);
+    compList();
     checkTurn();
     yellow1();
     if (!win) {
         setTimeout(() => {
             clearColor();
-        }, 500);
+        }, 300);
     }
 });
 
@@ -131,12 +137,13 @@ function green1() {
 }
 green.addEventListener("click", function() {
     playerOrder.push(2);
+    compList();
     checkTurn();
     green1();
     if (!win) {
         setTimeout(() => {
             clearColor();
-        }, 500);
+        }, 300);
     }
 });
 
@@ -146,15 +153,16 @@ function blue1() {
 }
 blue.addEventListener("click", function() {
     playerOrder.push(3);
+    compList();
     checkTurn();
     blue1();
     if (!win) {
         setTimeout(() => {
             clearColor();
-        }, 500);
+        }, 300);
     }
 });
-// 5. Create a clear color function to allow colors to return back to normal after being clicked
+// 7. Create a clear color function to allow colors to return back to normal after being clicked
 function clearColor() {
     red.style.backgroundColor = "darkred";
     red.style.border = "5px solid black";
@@ -165,7 +173,7 @@ function clearColor() {
     blue.style.backgroundColor = "darkblue";
     blue.style.border = "5px solid black";
 };
-// 6. Create a flash color function that will flash all colors at the same time to tell you you got it wrong
+// 8. Create a flash color function that will flash all colors at the same time to tell you you got it wrong
 function flashColor() {
     red.style.backgroundColor = "red";
     red.style.border = "5px solid white";
@@ -176,4 +184,3 @@ function flashColor() {
     blue.style.backgroundColor = "blue";
     blue.style.border = "5px solid white";
 };
-
