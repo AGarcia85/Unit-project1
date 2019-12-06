@@ -15,7 +15,7 @@ This Amazing project was made by The Great Alex Garcia.
 
 ## What Was Used?
 For this project I used HTML and CSS of course to mark up and style my game page. I also used JavaScript 
-for user interaction with the game. I used mostly functions, eventListeners and DOM manupilation to change events when ooperated by the user such as clicking on a color and buttons.
+for user interaction with the game. I used mostly functions, eventListeners, DOM manupilation to change events when operated by the user such as clicking on a color and buttons and empty arrays to both store random number order for computer to play and player input and computer input orders.
 
 ## Why Was it Made?
 This Project was made, not because I was forced too, but for a class unit project and becuase it was challenging enough that it overloading the few brain cells I have left. So yeah, Thanks Hammad and Roger.

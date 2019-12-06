@@ -27,7 +27,7 @@ function gameStart() {
     levelCounter.innerHTML = 1
     win == false;
     playerOrder = [];
-    compList();
+    compOrder= [];
     flash = 0;
     intervalId = 0;
     level = 1;
@@ -40,12 +40,15 @@ function gameStart() {
     intervalId = setInterval(rounds, 800);
 };
 // Create a function to track the computer order with a for loop with colorOrder.length
-function compList() {
-    for (let j = 0; j < intervalId; j++) {
-        compOrder.push(colorOrder[j]);
-    }
+// function compList() {
+//     for (let j = 0; j < intervalId; j++) {
+//         compOrder.push(colorOrder[j]);
+//         console.log(`J: ${j}`)
+//         console.log(`intervalID: ${intervalId}`)
+//         console.log("Comp list did a push")
+//     }
 
-}
+// }
 
 // 4. Create fucntion to play rounds
 function rounds() {
@@ -61,6 +64,7 @@ function rounds() {
             if (colorOrder[flash] == 2) green1();
             if (colorOrder[flash] == 3) blue1();
             flash++;
+            compOrder.push(colorOrder[flash]);
         }, 500);
     }; 
 };
@@ -68,8 +72,8 @@ function rounds() {
 // 5. Create a check function to check player input against computer input.
 function checkTurn() {
     // added console.log for both playerorder and colors played to check for input
-    console.log(playerOrder);
-    console.log(compOrder);
+    console.log(`playerOrder: ${playerOrder}`);
+    console.log(`compOrder: ${compOrder}`);
     // add win argument for when player reaches last level
     if (playerOrder.length == 20) {
         flashColor();
@@ -84,13 +88,15 @@ function checkTurn() {
             clearColor();
 		    compTurn = true;
 		    flash = 0;
-		    playerOrder = [];
+            playerOrder = [];
+            compOrder = [];
 		    correct = true;
         }, 800);
     // add an if statement for when player gets right colors and needs to move to next
     }else if (level === playerOrder.length && !win) {
         level++;
         playerOrder = [];
+        compOrder = [];
         compTurn = true;
         flash = 0;
         levelCounter.innerHTML = level;
@@ -105,7 +111,6 @@ function red1() {
 }
 red.addEventListener("click", function() { 
     playerOrder.push(0);
-    compList();
     checkTurn();
     red1();
     if (!win) {
@@ -121,7 +126,6 @@ function yellow1() {
 }
 yellow.addEventListener("click", function() {
     playerOrder.push(1);
-    compList();
     checkTurn();
     yellow1();
     if (!win) {
@@ -137,7 +141,6 @@ function green1() {
 }
 green.addEventListener("click", function() {
     playerOrder.push(2);
-    compList();
     checkTurn();
     green1();
     if (!win) {
@@ -153,7 +156,6 @@ function blue1() {
 }
 blue.addEventListener("click", function() {
     playerOrder.push(3);
-    compList();
     checkTurn();
     blue1();
     if (!win) {
