@@ -1,5 +1,8 @@
 body {
-    background-color: rgb(206, 110, 253);
+    background-image: url('./colors.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 header {
@@ -12,6 +15,15 @@ header {
     padding: 10px;
     margin: auto;
 
+}
+
+footer{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: space-around;
 }
 
 h1 {
@@ -68,6 +80,16 @@ h2 {
     margin: auto;
 }
 
+h3 {
+    color: aliceblue;
+    text-align: center;
+    font-family: fantasy;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 30px;
+    margin: 20px auto;
+}
+
 .level {
     border: 2px solid white;
     background-color: black;
@@ -113,7 +135,7 @@ button:hover {
 
 #red {
     background-color: darkred;
-    border-radius: 200px 0 0;
+    border-radius: 200px 0 0 0;
 }
 
 #yellow {
@@ -129,4 +151,39 @@ button:hover {
 #blue {
     background-color: darkblue;
     border-radius: 0 0 200px 0;
+}
+
+@media (min-width: 320px) {
+    h1 {
+        text-align: center;
+        font-size: 60px;
+        font-weight: bolder;
+        padding: 5px;
+        margin: 0;
+    }
+    .level {
+        border: 1px solid white;
+        background-color: black;
+        width: 150px;
+        height: 40px;
+        font-size: 20px;
+        margin: 2px auto;
+    }
+    .board {
+        width: 350px;
+        height: 350px;
+        padding-top: 40px;
+        padding-bottom: 60px;
+        margin: auto;
+    }
+    .colors {
+        border: 3px solid black;
+        width: 150px;
+        height: 150px;
+        margin: 5px auto;
+    
+    }
+    footer{
+        display: none;
+    }
 }

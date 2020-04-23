@@ -35,7 +35,7 @@ function gameStart() {
     for (let i = 0; i < 20; i++) {
         colorOrder.push(Math.floor(Math.random() * 4));
     }
-    //console.log(colorOrder);
+    console.log(colorOrder);
     compTurn = true;
     intervalId = setInterval(rounds, 800);
 };
@@ -50,7 +50,7 @@ function gameStart() {
 
 // }
 
-// 4. Create fucntion to play rounds
+// 4. Create function to play rounds
 function rounds() {
     if (flash == level) {
         clearInterval(intervalId);
@@ -77,12 +77,12 @@ function checkTurn() {
     // add win argument for when player reaches last level
     if (playerOrder.length == 20) {
         flashColor();
-        levelCounter.innerHTML = "FINALLY!";
+        levelCounter.innerHTML = "Winner!";
         win = true;
     // add an if statement for when player clicks incorrect color 
     }else if (playerOrder[playerOrder.length - 1] !== colorOrder[playerOrder.length - 1]) {
         flashColor();
-        levelCounter.innerHTML = "YOU SUCK!";
+        levelCounter.innerHTML = "Try Again!";
         start.style.backgroundColor = "red"
         setTimeout(() => {
             clearColor();
