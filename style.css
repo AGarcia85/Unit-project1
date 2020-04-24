@@ -153,12 +153,12 @@ button:hover {
     border-radius: 0 0 200px 0;
 }
 
-@media (min-width: 320px) {
+@media (max-width: 420px) {
     h1 {
         text-align: center;
-        font-size: 60px;
+        font-size: 30px;
         font-weight: bolder;
-        padding: 5px;
+        padding: 2px;
         margin: 0;
     }
     .level {
